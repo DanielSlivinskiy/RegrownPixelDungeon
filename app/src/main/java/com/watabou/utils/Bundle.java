@@ -225,8 +225,7 @@ public class Bundle {
 
 		}
 	}
-
-
+	
 	public void put( String key, Bundlable object ) {
 		if (object != null) {
 			try {

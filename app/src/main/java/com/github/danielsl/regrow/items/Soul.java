@@ -5,7 +5,6 @@ import com.github.danielsl.regrow.Dungeon;
 import com.github.danielsl.regrow.actors.Actor;
 import com.github.danielsl.regrow.actors.Char;
 import com.github.danielsl.regrow.actors.hero.Hero;
-import com.github.danielsl.regrow.actors.mobs.Bestiary;
 import com.github.danielsl.regrow.actors.mobs.Mob;
 import com.github.danielsl.regrow.actors.mobs.Rat;
 import com.github.danielsl.regrow.effects.Splash;
