@@ -64,7 +64,7 @@ public class Potion extends Item {
 			PotionOfInvisibility.class, PotionOfMight.class,
 			PotionOfFrost.class, PotionOfMending.class,
 			PotionOfOverHealing.class};
-	
+
 	private static final String[] colors = { "turquoise", "crimson", "azure",
 			"jade", "golden", "magenta", "charcoal", "ivory", "amber",
 			"bistre", "indigo", "silver", "aqua", "violet"};
@@ -90,18 +90,16 @@ public class Potion extends Item {
 
 	@SuppressWarnings("unchecked")
 	public static void initColors() {
-		handler = new ItemStatusHandler<Potion>(
-				(Class<? extends Potion>[]) potions, colors, images);
+		handler = new ItemStatusHandler<Potion>( (Class<? extends Potion>[])potions, colors, images );
 	}
 
-	public static void save(Bundle bundle) {
-		handler.save(bundle);
+	public static void save( Bundle bundle ) {
+		handler.save( bundle );
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void restore(Bundle bundle) {
-		handler = new ItemStatusHandler<Potion>(
-				(Class<? extends Potion>[]) potions, colors, images, bundle);
+	public static void restore( Bundle bundle ) {
+		handler = new ItemStatusHandler<Potion>( (Class<? extends Potion>[])potions, colors, images, bundle );
 	}
 
 	public Potion() {
@@ -159,7 +157,7 @@ public class Potion extends Item {
 						|| this instanceof PotionOfHealing
 						|| this instanceof PotionOfMindVision
 						|| this instanceof PotionOfStrength
-						|| this instanceof PotionOfInvisibility 
+						|| this instanceof PotionOfInvisibility
 						|| this instanceof PotionOfMight
 						|| this instanceof PotionOfOverHealing
 						|| this instanceof PotionOfMending)) {
