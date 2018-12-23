@@ -26,8 +26,11 @@ import com.github.danielsl.regrow.actors.buffs.Paralysis;
 import com.github.danielsl.regrow.actors.buffs.Roots;
 import com.github.danielsl.regrow.actors.mobs.npcs.NPC;
 import com.github.danielsl.regrow.effects.CheckedCell;
+import com.github.danielsl.regrow.items.Item;
 import com.github.danielsl.regrow.levels.Level;
 import com.github.danielsl.regrow.sprites.TowerSprite;
+import com.watabou.utils.Bundlable;
+import com.watabou.utils.Bundle;
 
 public abstract class Machine extends NPC {
 
@@ -143,5 +146,22 @@ public abstract class Machine extends NPC {
     public HashSet<Class<?>> immunities() {
         return IMMUNITIES;
     }
+
+    public static final String ORIENTATION = "orientation";
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        bundle.put(ORIENTATION, orientation);
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
+        orientation = bundle.getInt(ORIENTATION);
+
+
+    }
+
+
 
 }

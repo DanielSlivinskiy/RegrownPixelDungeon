@@ -5,6 +5,8 @@ import com.github.danielsl.regrow.items.Item;
 import com.github.danielsl.regrow.levels.Level;
 import com.github.danielsl.regrow.scenes.GameScene;
 import com.github.danielsl.regrow.windows.machineWindows.WndCollector;
+import com.watabou.utils.Bundlable;
+import com.watabou.utils.Bundle;
 
 import java.util.ArrayList;
 
@@ -56,6 +58,25 @@ public class Collector extends Machine{
         }
         Dungeon.hero.spendAndNext(TIME_TO_PICK_UP);
         collectedItems.clear();
+    }
+
+    public static final String ITEMS = "collectorInventory";
+
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        bundle.put(ITEMS, collectedItems);
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
+        collectedItems.clear();
+        for (Bundlable item : bundle.getCollection(ITEMS)) {
+            if (item != null)
+                collectedItems.add((Item) item);
+        }
+
     }
 
 }
