@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 public class Harverster extends Machine {
 
+    {
+        name = "Harvester";
+    }
+
     public ArrayList<Integer> AOE() {
         ArrayList<Integer> aoe = new ArrayList<>();
 
@@ -31,4 +35,10 @@ public class Harverster extends Machine {
     @Override
     public void interact(){
     }
+
+    @Override
+    public String description(){
+        return "The Harvester will trample all tall grass tiles in a 3x3 area around it.";
+    }
+
 }

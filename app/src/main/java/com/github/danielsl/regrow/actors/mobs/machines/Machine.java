@@ -99,6 +99,11 @@ public abstract class Machine extends NPC {
     }
 
     @Override
+    public String description() {
+        return "An intricate arcane device designed to automate the most tedious of tasks.";
+    }
+
+    @Override
     public int defenseSkill(Char enemy) {
         return 1000;
     }
