@@ -26,6 +26,7 @@ import java.util.Calendar;
 import java.util.HashSet;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.github.danielsl.regrow.actors.Actor;
 import com.github.danielsl.regrow.actors.Char;
@@ -1126,6 +1127,7 @@ public static Level newJournalLevel(int page, Boolean first){
 
 		Scroll.restore(bundle);
 		Potion.restore(bundle);
+		Log.i("DEBUG","Potions restored!!");
 		Wand.restore(bundle);
 		Ring.restore(bundle);
 

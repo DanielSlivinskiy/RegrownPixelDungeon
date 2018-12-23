@@ -190,19 +190,6 @@ public enum HeroClass {
 
 		WandOfMagicMissile wand = new WandOfMagicMissile();
 		wand.identify().collect();
-
-		new Blueberry().identify().collect();
-		new PotionOfMindVision().identify().collect();
-		new WandOfRegrowth().identify().upgrade(20).collect();
-		new DebugSpawner().identify().collect();
-		new OtilukesJournal().identify().collect();
-		JournalPage page = new JournalPage();
-		page.room = 0;
-		page.identify().collect();
-
-		new Soul(Otiluke.class).identify().collect();
-		new SacrificialDagger().enchant(new SoulReaper()).identify().collect();
-
 		KeyRing keyring = new KeyRing(); keyring.collect();
 		
 		Dungeon.quickslot.setSlot(0, wand);

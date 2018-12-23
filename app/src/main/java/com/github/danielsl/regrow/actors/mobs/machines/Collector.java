@@ -62,21 +62,21 @@ public class Collector extends Machine{
 
     public static final String ITEMS = "collectorInventory";
 
-    @Override
-    public void storeInBundle(Bundle bundle) {
-        super.storeInBundle(bundle);
-        bundle.put(ITEMS, collectedItems);
-    }
-
-    @Override
-    public void restoreFromBundle(Bundle bundle) {
-        super.restoreFromBundle(bundle);
-        collectedItems.clear();
-        for (Bundlable item : bundle.getCollection(ITEMS)) {
-            if (item != null)
-                collectedItems.add((Item) item);
-        }
-
-    }
+//    @Override
+//    public void storeInBundle(Bundle bundle) {
+//        super.storeInBundle(bundle);
+//        bundle.put(ITEMS, collectedItems);
+//    }
+//
+//    @Override
+//    public void restoreFromBundle(Bundle bundle) {
+//        super.restoreFromBundle(bundle);
+//        collectedItems.clear();
+//        for (Bundlable item : bundle.getCollection(ITEMS)) {
+//            if (item != null)
+//                collectedItems.add((Item) item);
+//        }
+//
+//    }
 
 }
