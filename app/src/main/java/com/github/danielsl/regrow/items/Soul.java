@@ -27,7 +27,8 @@ public class Soul extends Item {
         name = "Monster Soul";
         image = ItemSpriteSheet.SOUL;
 
-        unique = true;
+        unique = false;
+        defaultAction = AC_SUMMON;
     }
 
     public Class<? extends Mob> monsterClass;
@@ -35,6 +36,16 @@ public class Soul extends Item {
     public Soul(Class<? extends Mob> monsterClass) {
         this.monsterClass = monsterClass;
     }
+
+    public Soul(String monsterClassName){
+        try {
+
+            this.monsterClass = Class.forName(monsterClassName).asSubclass(Mob.class);
+        } catch (ClassNotFoundException e){
+            this.monsterClass = Rat.class;
+        }
+    }
+
 
     @Override
     public boolean isUpgradable() {
@@ -49,7 +60,6 @@ public class Soul extends Item {
     public static final String AC_SUMMON = "SUMMON";
 
     public ArrayList<String> actions(Hero hero) {
-        super.actions(hero);
         ArrayList<String> actions = super.actions(hero);
         actions.add(AC_SUMMON);
 
@@ -71,7 +81,7 @@ public class Soul extends Item {
         if (Level.pit[cell]) {
             super.onThrow(cell);
         } else {
-            Dungeon.level.drop(shatter(null, cell), cell);
+            Dungeon.level.drop(shatter(null, cell), cell).sprite.drop();
         }
     }
 

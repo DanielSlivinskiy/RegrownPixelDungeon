@@ -21,10 +21,8 @@ import com.github.danielsl.regrow.Assets;
 import com.github.danielsl.regrow.Badges;
 import com.github.danielsl.regrow.Challenges;
 import com.github.danielsl.regrow.Dungeon;
-import com.github.danielsl.regrow.Journal;
 import com.github.danielsl.regrow.ShatteredPixelDungeon;
 import com.github.danielsl.regrow.actors.mobs.Otiluke;
-import com.github.danielsl.regrow.actors.mobs.Rat;
 import com.github.danielsl.regrow.items.Bomb;
 import com.github.danielsl.regrow.items.DebugSpawner;
 import com.github.danielsl.regrow.items.EasterEgg;
@@ -60,6 +58,7 @@ import com.github.danielsl.regrow.items.wands.Wand;
 import com.github.danielsl.regrow.items.wands.WandOfFlock;
 import com.github.danielsl.regrow.items.wands.WandOfMagicMissile;
 import com.github.danielsl.regrow.items.wands.WandOfRegrowth;
+import com.github.danielsl.regrow.items.weapon.enchantments.SoulReaper;
 import com.github.danielsl.regrow.items.weapon.melee.Dagger;
 import com.github.danielsl.regrow.items.weapon.melee.Knuckles;
 import com.github.danielsl.regrow.items.weapon.melee.SacrificialDagger;
@@ -202,7 +201,7 @@ public enum HeroClass {
 		page.identify().collect();
 
 		new Soul(Otiluke.class).identify().collect();
-		new SacrificialDagger().identify().collect();
+		new SacrificialDagger().enchant(new SoulReaper()).identify().collect();
 
 		KeyRing keyring = new KeyRing(); keyring.collect();
 		

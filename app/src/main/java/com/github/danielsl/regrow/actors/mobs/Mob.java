@@ -30,6 +30,7 @@ import com.github.danielsl.regrow.actors.buffs.Amok;
 import com.github.danielsl.regrow.actors.buffs.Buff;
 import com.github.danielsl.regrow.actors.buffs.Dewcharge;
 import com.github.danielsl.regrow.actors.buffs.Sleep;
+import com.github.danielsl.regrow.actors.buffs.SoulMark;
 import com.github.danielsl.regrow.actors.buffs.Terror;
 import com.github.danielsl.regrow.actors.hero.Hero;
 import com.github.danielsl.regrow.actors.hero.HeroSubClass;
@@ -54,6 +55,8 @@ import com.github.danielsl.regrow.utils.Utils;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
+
+import javax.microedition.khronos.opengles.GL;
 
 public abstract class Mob extends Char {
 
@@ -473,7 +476,8 @@ public abstract class Mob extends Char {
 	public void die(Object cause) {
 
 		super.die(cause);
-		
+
+
 		int generation=0;
 		
 		if(this instanceof Swarm){
@@ -505,13 +509,20 @@ public abstract class Mob extends Char {
 		for (Buff buff : Dungeon.hero.buffs(RingOfWealth.Wealth.class)) {
 			bonus += ((RingOfWealth.Wealth) buff).level;
 		}
+		GLog.i("died");
+
+		for(Buff b : buffs(SoulMark.class)){
+			GLog.i(b.toString());
+			if(b instanceof SoulMark){
+				GLog.i("dropped");
+				Dungeon.level.drop(new Soul(this.getClass()), pos).sprite.drop();
+				break;
+			}
+		}
 
 		lootChance *= Math.pow(1.1, bonus);
 		lootChanceOther *= Math.pow(1.1, bonus);
 
-		if(!Dungeon.hero.buffs(SacrificialDagger.SoulReaper.class).isEmpty()){
-            Dungeon.level.drop(new Soul(getClass()), pos).sprite.drop();
-		}
 
 		if (Random.Float() < lootChance && Dungeon.hero.lvl <= maxLvl + 800) {
 			Item loot = createLoot();

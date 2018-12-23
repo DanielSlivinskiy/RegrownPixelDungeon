@@ -290,7 +290,7 @@ public class Weapon extends KindOfWeapon {
 		Enchantment ench = Enchantment.randomLuck();
 		return enchant(ench);
 	}
-	
+
 	public Weapon enchantBuzz() {
 
 		Enchantment ench = Enchantment.randomBuzz();
@@ -433,7 +433,7 @@ public class Weapon extends KindOfWeapon {
 				return null;
 			}
 		}
-		
+
 		@SuppressWarnings("unchecked")
 		public static Enchantment randomLuck() {
 			try {
