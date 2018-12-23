@@ -147,20 +147,20 @@ public abstract class Machine extends NPC {
         return IMMUNITIES;
     }
 
-//    public static final String ORIENTATION = "orientation";
-//    @Override
-//    public void storeInBundle(Bundle bundle) {
-//        super.storeInBundle(bundle);
-//        bundle.put(ORIENTATION, orientation);
-//    }
-//
-//    @Override
-//    public void restoreFromBundle(Bundle bundle) {
-//        super.restoreFromBundle(bundle);
-//        orientation = bundle.getInt(ORIENTATION);
-//
-//
-//    }
+    public static final String ORIENTATION = "orientation";
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        bundle.put(ORIENTATION, orientation);
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
+        orientation = bundle.getInt(ORIENTATION);
+
+
+    }
 
 
 

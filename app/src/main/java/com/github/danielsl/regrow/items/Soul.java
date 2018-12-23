@@ -143,19 +143,19 @@ public class Soul extends Item {
 
     public static final String MONSTER_CLASS = "monsterClass";
 
-//    @Override
-//    public void storeInBundle(Bundle bundle) {
-//        super.storeInBundle(bundle);
-//        bundle.put(MONSTER_CLASS, this.monsterClass.getName());
-//    }
-//
-//    @Override
-//    public void restoreFromBundle(Bundle bundle) {
-//        try {
-//            this.monsterClass = Class.forName(bundle.getString(MONSTER_CLASS)).asSubclass(Mob.class);
-//        } catch (ClassNotFoundException e){
-//            this.monsterClass = Rat.class;
-//            e.printStackTrace();
-//        }
-//    }
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        bundle.put(MONSTER_CLASS, this.monsterClass.getName());
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        try {
+            this.monsterClass = Class.forName(bundle.getString(MONSTER_CLASS)).asSubclass(Mob.class);
+        } catch (ClassNotFoundException e){
+            this.monsterClass = Rat.class;
+            e.printStackTrace();
+        }
+    }
 }
