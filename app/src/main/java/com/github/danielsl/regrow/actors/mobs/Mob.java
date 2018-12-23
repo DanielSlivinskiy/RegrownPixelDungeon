@@ -474,8 +474,17 @@ public abstract class Mob extends Char {
 
 	@Override
 	public void die(Object cause) {
+		for(Buff b : buffs(SoulMark.class)) {
+			GLog.i(b.toString());
+			if (b instanceof SoulMark) {
+				Dungeon.level.drop(new Soul(this.getClass()), pos).sprite.drop();
+				break;
+			}
 
+		}
 		super.die(cause);
+
+		GLog.i("died");
 
 
 		int generation=0;
@@ -509,16 +518,8 @@ public abstract class Mob extends Char {
 		for (Buff buff : Dungeon.hero.buffs(RingOfWealth.Wealth.class)) {
 			bonus += ((RingOfWealth.Wealth) buff).level;
 		}
-		GLog.i("died");
 
-		for(Buff b : buffs(SoulMark.class)){
-			GLog.i(b.toString());
-			if(b instanceof SoulMark){
-				GLog.i("dropped");
-				Dungeon.level.drop(new Soul(this.getClass()), pos).sprite.drop();
-				break;
-			}
-		}
+
 
 		lootChance *= Math.pow(1.1, bonus);
 		lootChanceOther *= Math.pow(1.1, bonus);
