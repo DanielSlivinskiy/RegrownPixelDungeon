@@ -53,7 +53,7 @@ public class WndMachine extends Window {
         titlebar.icon(new TowerSprite());
         titlebar.label(machine.name);
         titlebar.setRect(0, 0, WIDTH, 0);
-        message = PixelScene.createMultiline("collector blah blah blah sample text blah blah blah", 6);
+        message = PixelScene.createMultiline(machine.description(), 6);
         message.maxWidth = WIDTH;
         message.measure();
         message.y = titlebar.bottom() + GAP;

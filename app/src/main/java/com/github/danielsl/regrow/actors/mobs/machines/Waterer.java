@@ -12,6 +12,10 @@ import java.util.ArrayList;
 
 public class Waterer extends Machine{
 
+    {
+        name = "Waterer";
+    }
+
     public ArrayList<Integer> AOE() {
         ArrayList<Integer> aoe = new ArrayList<>();
 
@@ -36,6 +40,11 @@ public class Waterer extends Machine{
                 }
             }
 
+    }
+
+    @Override
+    public String description(){
+        return "The Waterer will water, just like the dew vial, a 3x3 areain front of itself.";
     }
 
     @Override

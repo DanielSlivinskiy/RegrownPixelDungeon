@@ -46,6 +46,11 @@ public class Collector extends Machine{
         GameScene.show(new WndCollector(this));
     }
 
+    @Override
+    public String description(){
+        return "The Collector will put all items in a 3x3 are in front of it into it's own internal inventory, from which the items can then be picked up.";
+    }
+
     public void collectItems(){
         for(Item i : collectedItems) {
             if(!i.doPickUpNoTime(Dungeon.hero)) i.doDrop(Dungeon.hero);
