@@ -33,6 +33,7 @@ import com.github.danielsl.regrow.items.AdamantWeapon;
 import com.github.danielsl.regrow.items.EquipableItem;
 import com.github.danielsl.regrow.items.Gold;
 import com.github.danielsl.regrow.items.Item;
+import com.github.danielsl.regrow.items.Soul;
 import com.github.danielsl.regrow.items.armor.Armor;
 import com.github.danielsl.regrow.items.bags.AnkhChain;
 import com.github.danielsl.regrow.items.bags.Bag;
@@ -68,7 +69,7 @@ public class WndBag extends WndTabbed {
 	public static enum Mode {
 		ALL, UNIDENTIFED, UPGRADEABLE, QUICKSLOT, FOR_SALE, WEAPON, ARMOR, ENCHANTABLE, 
 		WAND, SEED, FOOD, POTION, SCROLL, EQUIPMENT, ADAMANT, REINFORCED, UPGRADEABLESIMPLE,
-		NOTREINFORCED, UPGRADEDEW, JOURNALPAGES
+		NOTREINFORCED, UPGRADEDEW, JOURNALPAGES, SOUL
 	}
 
 	protected static final int COLS_P = 4;
@@ -413,6 +414,7 @@ public class WndBag extends WndTabbed {
 							|| mode == Mode.SCROLL && (item instanceof Scroll)
 							|| mode == Mode.EQUIPMENT
 							&& (item instanceof EquipableItem)
+							|| mode == Mode.SOUL && (item instanceof Soul)
 							|| mode == Mode.ALL);
 				}
 			} else {

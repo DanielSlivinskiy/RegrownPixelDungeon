@@ -25,6 +25,7 @@ import com.github.danielsl.regrow.actors.mobs.machines.Spawner;
 import com.github.danielsl.regrow.actors.mobs.npcs.Blacksmith;
 import com.github.danielsl.regrow.actors.mobs.npcs.Ghost;
 import com.github.danielsl.regrow.items.Item;
+import com.github.danielsl.regrow.items.Soul;
 import com.github.danielsl.regrow.scenes.GameScene;
 import com.github.danielsl.regrow.scenes.PixelScene;
 import com.github.danielsl.regrow.sprites.FetidRatSprite;
@@ -53,7 +54,7 @@ public class WndSpawner extends WndMachine {
             @Override
             protected void onClick() {
                 btnPressed = soulItem;
-                GameScene.selectItem(itemSelector, WndBag.Mode.UPGRADEABLESIMPLE,
+                GameScene.selectItem(itemSelector, WndBag.Mode.ALL,
                         "test");
             }
         };
@@ -67,7 +68,9 @@ public class WndSpawner extends WndMachine {
         RedButton btnSetSoul = new RedButton("SET SOUL") {
             @Override
             protected void onClick() {
-                //collector.collectItems();
+                Soul soul = (Soul) soulItem.item;
+                soul.detach(Dungeon.hero.belongings.backpack);
+                spawner.setSoulClass(soul.monsterClass);
                 hide();
 
             }
