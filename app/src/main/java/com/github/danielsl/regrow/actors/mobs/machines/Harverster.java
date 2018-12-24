@@ -3,6 +3,7 @@ package com.github.danielsl.regrow.actors.mobs.machines;
 import com.github.danielsl.regrow.Dungeon;
 import com.github.danielsl.regrow.levels.Level;
 import com.github.danielsl.regrow.scenes.GameScene;
+import com.github.danielsl.regrow.sprites.HarvesterSprite;
 import com.github.danielsl.regrow.windows.machineWindows.WndCollector;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Harverster extends Machine {
 
     {
         name = "Harvester";
+        spriteClass = HarvesterSprite.class;
     }
 
     public ArrayList<Integer> AOE() {
