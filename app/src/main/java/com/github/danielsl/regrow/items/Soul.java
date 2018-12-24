@@ -158,6 +158,7 @@ public class Soul extends Item {
 
     @Override
     public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
         try {
             this.monsterClass = Class.forName(bundle.getString(MONSTER_CLASS)).asSubclass(Mob.class);
         } catch (ClassNotFoundException e){
