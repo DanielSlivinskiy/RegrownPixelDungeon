@@ -20,6 +20,12 @@ public class Attractor extends Machine{
         name = "Attractor";
     }
 
+    @Override
+    public float speed(){
+        return 0.2f;
+    }
+
+
     public ArrayList<Integer> AOE() {
         ArrayList<Integer> aoe = new ArrayList<>();
 

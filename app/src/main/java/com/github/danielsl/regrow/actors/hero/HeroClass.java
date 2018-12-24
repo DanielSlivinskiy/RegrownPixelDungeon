@@ -207,6 +207,8 @@ public enum HeroClass {
 		page.identify().collect();
 
 		new Soul(Spawner.class).identify().collect();
+		new Soul(Killer.class).identify().collect();
+		new Soul(Attractor.class).identify().collect();
 		new SacrificialDagger().enchant(new SoulReaper()).identify().collect();
 
 		KeyRing keyring = new KeyRing(); keyring.collect();

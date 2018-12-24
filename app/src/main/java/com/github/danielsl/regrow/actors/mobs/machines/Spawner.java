@@ -1,14 +1,21 @@
 package com.github.danielsl.regrow.actors.mobs.machines;
 
 import com.github.danielsl.regrow.Dungeon;
+import com.github.danielsl.regrow.actors.Actor;
+import com.github.danielsl.regrow.actors.mobs.Mob;
+import com.github.danielsl.regrow.actors.mobs.Rat;
 import com.github.danielsl.regrow.levels.Level;
 import com.github.danielsl.regrow.scenes.GameScene;
 import com.github.danielsl.regrow.windows.machineWindows.WndCollector;
 import com.github.danielsl.regrow.windows.machineWindows.WndSpawner;
+import com.watabou.utils.Random;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class Spawner extends Machine {
+
+    Class<? extends Mob> soulClass = Rat.class;
 
     {
         name = "Spawner";
@@ -23,12 +30,42 @@ public class Spawner extends Machine {
         return aoe;
     }
 
+    public void setSoulClass(Class<? extends Mob> soulClass) {
+        this.soulClass = soulClass;
+    }
+
+
+
     public void doWork() {
+    if(soulClass != null)
+        for (int n : AOE()) {
 
-        for (int n : Level.NEIGHBOURS8) {
-            int c = this.pos + n;
+            if(Random.Int(16) == 1){
+                Mob mob;
 
-            //Dungeon.level.press(c, this);
+
+
+                try {
+                    mob = soulClass.getConstructor().newInstance();
+                } catch (NoSuchMethodException e) {
+                    mob = new Rat();
+                } catch (InstantiationException e) {
+                    mob = new Rat();
+                } catch (IllegalAccessException e) {
+                    mob = new Rat();
+                } catch (InvocationTargetException e) {
+                    mob = new Rat();
+                }
+
+                boolean[] passable = Level.passable;
+
+                if (Actor.findChar(n) == null && passable[n]) {
+                    mob.state = mob.WANDERING;
+                    mob.pos = n;
+                    GameScene.add(mob);
+                }
+
+            }
         }
     }
 

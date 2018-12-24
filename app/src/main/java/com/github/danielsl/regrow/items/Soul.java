@@ -37,9 +37,11 @@ public class Soul extends Item {
     }
 
     public Soul(String monsterClassName){
+
         try {
 
             this.monsterClass = Class.forName(monsterClassName).asSubclass(Mob.class);
+            this.name = monsterClass.getSimpleName() + " Soul";
         } catch (ClassNotFoundException e){
             this.monsterClass = Rat.class;
         }
@@ -65,6 +67,7 @@ public class Soul extends Item {
         return actions;
     }
 
+
     public void execute(Hero hero, String action) {
         if (action.equals(AC_SUMMON)) {
             detach(Dungeon.hero.belongings.backpack);
@@ -82,6 +85,12 @@ public class Soul extends Item {
         } else {
             Dungeon.level.drop(shatter(null, cell), cell).sprite.drop();
         }
+    }
+
+    @Override
+    public String name() {
+        return monsterClass.getSimpleName() + " Soul";
+
     }
 
     public Item shatter(Char owner, int pos) {
@@ -120,7 +129,6 @@ public class Soul extends Item {
             } catch (InvocationTargetException e) {
                 mob = new Rat();
             }
-            mob.state = mob.SLEEPING;
             mob.pos = newPos;
 
             GameScene.add(mob);

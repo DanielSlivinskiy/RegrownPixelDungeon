@@ -26,10 +26,9 @@ public class Harverster extends Machine {
 
     public void doWork() {
 
-        for (int n : Level.NEIGHBOURS8) {
-            int c = this.pos + n;
+        for (int n : AOE()) {
 
-            Dungeon.level.press(c, this);
+            Dungeon.level.press(n, this);
         }
     }
 
