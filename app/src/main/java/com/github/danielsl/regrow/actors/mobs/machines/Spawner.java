@@ -4,13 +4,14 @@ import com.github.danielsl.regrow.Dungeon;
 import com.github.danielsl.regrow.levels.Level;
 import com.github.danielsl.regrow.scenes.GameScene;
 import com.github.danielsl.regrow.windows.machineWindows.WndCollector;
+import com.github.danielsl.regrow.windows.machineWindows.WndSpawner;
 
 import java.util.ArrayList;
 
-public class Harverster extends Machine {
+public class Spawner extends Machine {
 
     {
-        name = "Harvester";
+        name = "Spawner";
     }
 
     public ArrayList<Integer> AOE() {
@@ -27,12 +28,13 @@ public class Harverster extends Machine {
         for (int n : Level.NEIGHBOURS8) {
             int c = this.pos + n;
 
-            Dungeon.level.press(c, this);
+            //Dungeon.level.press(c, this);
         }
     }
 
     @Override
     public void interact(){
+        GameScene.show(new WndSpawner(this));
     }
 
     @Override

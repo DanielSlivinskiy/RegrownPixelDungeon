@@ -28,7 +28,10 @@ import com.github.danielsl.regrow.actors.mobs.npcs.NPC;
 import com.github.danielsl.regrow.effects.CheckedCell;
 import com.github.danielsl.regrow.items.Item;
 import com.github.danielsl.regrow.levels.Level;
+import com.github.danielsl.regrow.scenes.GameScene;
 import com.github.danielsl.regrow.sprites.TowerSprite;
+import com.github.danielsl.regrow.windows.machineWindows.WndCollector;
+import com.github.danielsl.regrow.windows.machineWindows.WndMachine;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
 
@@ -141,6 +144,12 @@ public abstract class Machine extends NPC {
         IMMUNITIES.add(Paralysis.class);
         IMMUNITIES.add(Roots.class);
     }
+
+    @Override
+    public void interact(){
+        GameScene.show(new WndMachine(this));
+    }
+
 
     @Override
     public HashSet<Class<?>> immunities() {

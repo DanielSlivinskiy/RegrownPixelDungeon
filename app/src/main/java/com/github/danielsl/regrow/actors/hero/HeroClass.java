@@ -23,6 +23,10 @@ import com.github.danielsl.regrow.Challenges;
 import com.github.danielsl.regrow.Dungeon;
 import com.github.danielsl.regrow.ShatteredPixelDungeon;
 import com.github.danielsl.regrow.actors.mobs.Otiluke;
+import com.github.danielsl.regrow.actors.mobs.machines.Attractor;
+import com.github.danielsl.regrow.actors.mobs.machines.Killer;
+import com.github.danielsl.regrow.actors.mobs.machines.Spawner;
+import com.github.danielsl.regrow.actors.mobs.npcs.Blacksmith;
 import com.github.danielsl.regrow.items.Bomb;
 import com.github.danielsl.regrow.items.DebugSpawner;
 import com.github.danielsl.regrow.items.EasterEgg;
@@ -191,6 +195,8 @@ public enum HeroClass {
 		WandOfMagicMissile wand = new WandOfMagicMissile();
 		wand.identify().collect();
 
+
+
 		new Blueberry().identify().collect();
 		new PotionOfMindVision().identify().collect();
 		new WandOfRegrowth().identify().upgrade(20).collect();
@@ -200,7 +206,7 @@ public enum HeroClass {
 		page.room = 0;
 		page.identify().collect();
 
-		new Soul(Otiluke.class).identify().collect();
+		new Soul(Spawner.class).identify().collect();
 		new SacrificialDagger().enchant(new SoulReaper()).identify().collect();
 
 		KeyRing keyring = new KeyRing(); keyring.collect();

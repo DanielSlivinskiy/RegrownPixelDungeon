@@ -20,8 +20,10 @@ package com.github.danielsl.regrow.ui;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.github.danielsl.regrow.Assets;
 import com.github.danielsl.regrow.Chrome;
 import com.github.danielsl.regrow.effects.ShadowBox;
+import com.github.danielsl.regrow.items.Item;
 import com.github.danielsl.regrow.scenes.PixelScene;
 import com.watabou.input.Keys;
 import com.watabou.input.Keys.Key;
@@ -31,6 +33,8 @@ import com.watabou.noosa.Game;
 import com.watabou.noosa.Group;
 import com.watabou.noosa.NinePatch;
 import com.watabou.noosa.TouchArea;
+import com.watabou.noosa.audio.Sample;
+import com.watabou.noosa.ui.Component;
 import com.watabou.utils.Signal;
 
 public class Window extends Group implements Signal.Listener<Key> {
@@ -204,6 +208,58 @@ public class Window extends Group implements Signal.Listener<Key> {
 				}
 			}
 			return false;
+		}
+	}
+	public static class ItemButton extends Component {
+
+		protected NinePatch bg;
+		protected ItemSlot slot;
+
+		public Item item = null;
+
+		@Override
+		protected void createChildren() {
+			super.createChildren();
+
+			bg = Chrome.get(Chrome.Type.BUTTON);
+			add(bg);
+
+			slot = new ItemSlot() {
+				@Override
+				protected void onTouchDown() {
+					bg.brightness(1.2f);
+					Sample.INSTANCE.play(Assets.SND_CLICK);
+				};
+
+				@Override
+				protected void onTouchUp() {
+					bg.resetColor();
+				}
+
+				@Override
+				protected void onClick() {
+					ItemButton.this.onClick();
+				}
+			};
+			add(slot);
+		}
+
+		protected void onClick() {
+		};
+
+		@Override
+		protected void layout() {
+			super.layout();
+
+			bg.x = x;
+			bg.y = y;
+			bg.size(width, height);
+
+			slot.setRect(x + 2, y + 2, width - 4, height - 4);
+		};
+
+		public void item(Item item) {
+			slot.item(this.item = item);
 		}
 	}
 }

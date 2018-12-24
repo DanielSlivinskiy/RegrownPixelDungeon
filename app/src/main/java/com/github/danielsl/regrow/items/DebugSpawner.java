@@ -25,6 +25,7 @@ public class DebugSpawner extends Item {
     private static final String AC_HARVERSTER = "HARVESTER";
     private static final String AC_WATERER = "WATERER";
 
+
     @Override
     public ArrayList<String> actions(Hero hero) {
         ArrayList<String> actions = super.actions(hero);

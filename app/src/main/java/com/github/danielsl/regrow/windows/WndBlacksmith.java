@@ -129,56 +129,5 @@ public class WndBlacksmith extends Window {
 		}
 	};
 
-	public static class ItemButton extends Component {
 
-		protected NinePatch bg;
-		protected ItemSlot slot;
-
-		public Item item = null;
-
-		@Override
-		protected void createChildren() {
-			super.createChildren();
-
-			bg = Chrome.get(Chrome.Type.BUTTON);
-			add(bg);
-
-			slot = new ItemSlot() {
-				@Override
-				protected void onTouchDown() {
-					bg.brightness(1.2f);
-					Sample.INSTANCE.play(Assets.SND_CLICK);
-				};
-
-				@Override
-				protected void onTouchUp() {
-					bg.resetColor();
-				}
-
-				@Override
-				protected void onClick() {
-					ItemButton.this.onClick();
-				}
-			};
-			add(slot);
-		}
-
-		protected void onClick() {
-		};
-
-		@Override
-		protected void layout() {
-			super.layout();
-
-			bg.x = x;
-			bg.y = y;
-			bg.size(width, height);
-
-			slot.setRect(x + 2, y + 2, width - 4, height - 4);
-		};
-
-		public void item(Item item) {
-			slot.item(this.item = item);
-		}
-	}
 }
